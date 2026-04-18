@@ -16,3 +16,6 @@ class LoginPage:
         
     def assert_login_successful(self):    
         expect(self.page.get_by_role("heading", name="Bem-vindo ao SimulaBank!")).to_be_visible()
+
+    def assert_login_unsuccessful(self):    
+        expect(self.page.get_by_text("Usuário ou senha incorretos!")).to_be_visible()
