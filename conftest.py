@@ -1,9 +1,16 @@
 import pytest
+from pages.boletos_page import BoletosPage
 from pages.common_page import CommonPage
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.pix_page import PixPage
 from pages.emprestimos_page import EmprestimosPage
+
+@pytest.fixture
+def page(page):
+    page.set_viewport_size({"width": 1920, "height": 1080})
+    page.goto("https://leogcarvalho.github.io/simulabank/login.html")
+    return page
 
 @pytest.fixture
 def common_page(page):
@@ -26,7 +33,5 @@ def emprestimos_page(page):
     return EmprestimosPage(page)
 
 @pytest.fixture
-def page(page):
-    page.set_viewport_size({"width": 1920, "height": 1080})
-    page.goto("https://leogcarvalho.github.io/simulabank/login.html")
-    return page
+def boletos_page(page):
+    return BoletosPage(page)
